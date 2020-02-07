@@ -1,0 +1,52 @@
+﻿@page
+@model IndexModel
+@{
+}
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Value</th>
+        </tr>
+        @foreach (var p in Model.Products)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.Description</td>
+                <td>@p.Value</td>
+                <td><a asp-page="/Admin/('product')Update">Update </a></td>
+                <td> <a href="/Admin/Delete">Delete</a></td>
+            </tr>
+        }
+    </table>
+    <div>
+        <form method="Post">
+            <label>Product Name</label>
+            <input asp-for="Product.Name" />
+
+            <label>Product Description</label>
+            <input asp-for="Product.Description" />
+
+            <label>Product Value</label>
+            <input asp-for="Product.Value" />
+            
+            <input type="submit" value="შენახვა" />
+        </form>
+    </div>
+    <div>
+        <form method="Post">
+            <label>Stock Name</label>
+            <input asp-for="Stock.Name" />
+
+            <label>Product Id</label>
+            <input asp-for="Stock.ProductId" />
+            <input type="submit" value="შენახვა" />
+        </form>
+    </div>
+</div>
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="~/js/Admin/main.js"></script>
+    }
